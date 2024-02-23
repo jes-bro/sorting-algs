@@ -1,3 +1,5 @@
+import kotlin.random.Random
+import kotlin.system.measureTimeMillis
 /**
  * A class that houses a variety of sorting algorithms.
  * Includes radixSort, selectionSort, quickSort, and insertionSort.
@@ -112,6 +114,65 @@ class Sort() {
             numList[left + 1] = key
         }
         return numList
+    }
+
+}
+
+/**
+ * Sweep over lists of different sizes with randomized values to se how long each algorithm takes to sort the list.
+ * Print the algorithm, the list size, and the runtime of each sort.
+ */
+fun main() {
+    val sort = Sort()
+    // Sweep over list sizes
+    val listSizes = listOf(1, 10, 100, 1000, 5000)
+    //Store a 3-element tuple with the algorithm name, the size of the list, and the runtime
+    val results = mutableListOf<Triple<String, Int, Long>>()
+
+    listSizes.forEach { size ->
+        repeat(5) {
+            val randomList = MutableList(size) { Random.nextInt(0, 100000) }
+
+            // selectionSort
+            val selectionSortList = randomList.toMutableList()
+            val selectionSortTime = measureTimeMillis {
+                sort.selectionSort(selectionSortList)
+            }
+            results.add(Triple("SelectionSort", size, selectionSortTime))
+
+            // insertionSort
+            val otherSortList = randomList.toMutableList()
+            val otherSortTime = measureTimeMillis {
+                sort.insertionSort(otherSortList)
+            }
+            results.add(Triple("InsertionSort", size, otherSortTime))
+
+            // quickSort
+            val quickSortList = randomList.toMutableList()
+            val quickSortTime = measureTimeMillis {
+                sort.quickSort(quickSortList)
+            }
+            results.add(Triple("quickSort", size, quickSortTime))
+
+            // radixSort
+            // Gets treated differently because my algorithm assumes that each
+            // number in the list has the same number of digits
+            val radixList = MutableList(size) { Random.nextInt(100, 1000) }
+            val radixSortList = radixList.toMutableList()
+            val radixSortTime = measureTimeMillis {
+                sort.radixSort(radixSortList)
+            }
+            results.add(Triple("radixSort", size, radixSortTime))
+        }
+    }
+
+    println("Algorithm name, List size, Average runtime (ms)")
+    listSizes.forEach { size ->
+        val algorithms = results.filter { it.second == size }.groupBy { it.first }
+        algorithms.forEach { (algorithm, records) ->
+            val averageTime = records.sumOf { it.third } / records.size
+            println("$algorithm, $size, $averageTime")
+        }
     }
 
 }
