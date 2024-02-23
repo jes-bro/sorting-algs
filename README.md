@@ -1,7 +1,10 @@
 # Assignment 4
 This is a repository of four sorting algorithms implemented in Kotlin for DSA assignment 4. 
 
-## Research
+## Research: AlphaDev Summary and Thoughts 
+I read the AlphaDev paper from Deep Mind. It spoke of an RL agent that learned to optimize CPU instructions for short fixed-length (lists of size 3, for example) or variable length lists (lists size 1 to 5, for example). In my mind, this does not count as a novel “sorting” algorithm because it doesn’t produce a new sorting algorithm in an abstract sense: it only produces a new algorithm in the practical sense of the word. As in, a new algorithm in the sequence of assembly instructions at the CPU level. Also, it only works for short lists, which may help solve some problems, like those that are recursively defined, but eventually once the recursive cases result in large enough lists, won’t the algorithm break? Improved CPU efficiency is not a new abstract sorting algorithm. 
+
+I also read about DynSort, a sorting algorithm that selects either merge or quicksort based on the properties of the list. It seems not-optimized in its current state, but could potentially perform better with optimizations. I wonder if you could use AlphaDev to optimize implementations of DynSort?
 
 ## Algorithm Time Complexity Analysis
 I randomly generated lists of different sizes to test the algorithms time performance on the lists: 
