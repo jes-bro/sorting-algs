@@ -35,7 +35,7 @@ radixSort, 5000, 5
 
 My insertion sort seemed the fastest? Though I think quicksort is supposed to be faster? Potentially it is worth looking into this more.
 
-Radix sort and insertion sort seem faster on all list sizes, whereas quicksort performs worse. Perhaps my quicksort implementation is slow for some reason. 
+Radix sort and insertion sort seem faster on all list sizes, whereas quicksort performs worse. Perhaps my quicksort implementation is slow for some reason. It makes sense that my radix sort is fast because I can only use it with lists of numbers that have the same number of digits. Potentially with more digits it would perform more slowly. So I'm not comparing apples to apples when comparing radix sort to the other algorithms. 
 
 ## Master's Theorem
  ![Master's Theorem Work](DD19540E-A062-47A0-8020-934AFF77B296.png)
