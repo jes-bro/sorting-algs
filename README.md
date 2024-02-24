@@ -38,3 +38,5 @@ My insertion sort seemed the fastest? Though I think quicksort is supposed to be
 Radix sort and insertion sort seem faster on all list sizes, whereas quicksort performs worse. Perhaps my quicksort implementation is slow for some reason. 
 
 ## Master's Theorem
+ ![Master's Theorem Work](DD19540E-A062-47A0-8020-934AFF77B296.png)
+ ![Master's Theorem Work](T(N)=3T(À)+N.pages)
